@@ -39,8 +39,49 @@ public class HelloApplication extends Application {
     }
 
     // Este puede necesitar una revisión, no entendí muy bien la instrucción.
-    public ArrayList<Instrumento> instrumentosIdentificar() {
-        return instrumentos;
+    public ArrayList<Instrumento> instrumentosIdentificar(String tipo) {
+        ArrayList<Instrumento> instrumentosIdentificar = new ArrayList<>();
+
+        return instrumentosIdentificar;
     }
-    
+
+    public ArrayList<Instrumento> instrumentosDeForma(String forma) {
+        ArrayList<Instrumento> instrumentosDeForma = new ArrayList<>();
+        for (Instrumento instrumento : instrumentos){
+            if(instrumento.getTipo().name().equalsIgnoreCase(forma)){
+                instrumentosDeForma.add(instrumento);
+            }
+        }
+        return instrumentosDeForma;
+    }
+
+    public ArrayList<Instrumento> instrumentosDeCondicion(String condicion) {
+        ArrayList<Instrumento> instrumentosDeCondicion = new ArrayList<>();
+        for (Instrumento instrumento : instrumentos){
+            if(instrumento.getCondicion().name().equalsIgnoreCase(condicion)){
+                instrumentosDeCondicion.add(instrumento);
+            }
+        }
+        return instrumentosDeCondicion;
+    }
+
+    public ArrayList<Instrumento> instrumentosDeValidez(Boolean validez) {
+        ArrayList<Instrumento> instrumentosDeValidez = new ArrayList<>();
+        for (Instrumento instrumento : instrumentos){
+            if(instrumento.getValidez() == validez){
+                instrumentosDeValidez.add(instrumento);
+            }
+        }
+        return instrumentosDeValidez;
+    }
+
+    public ArrayList<Instrumento> instrumentosOrdenadosPorId() {
+        ArrayList<Instrumento> instrumentosOrdenadosPorId = new ArrayList<>();
+        /*
+        TO-DO: ordenar la lista usando el id como parametro para comparar.
+        La neta llevo un chorro sin implementar un comparador, lo investigare y
+        terminare el método, o si alguien se acuerda pues se lo avientan.
+         */
+        return instrumentosOrdenadosPorId;
+    }
 }
