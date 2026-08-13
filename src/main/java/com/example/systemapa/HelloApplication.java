@@ -28,6 +28,7 @@ public class HelloApplication extends Application {
     o en la clase StorageManager o en alguna otra clase.
      */
 
+    // Introduce un autor y muestra todos los instrumentos de dicho autor
     public ArrayList<Instrumento> instrumentosDelAutor(String autor) {
         ArrayList<Instrumento> instrumentosDelAutor = new ArrayList<>();
         for (Instrumento instrumento : instrumentos){
@@ -39,12 +40,14 @@ public class HelloApplication extends Application {
     }
 
     // Este puede necesitar una revisión, no entendí muy bien la instrucción.
+    // Introduce por ejemplo "identificar" (por tipo) y muestra todos los instrumentos que identifican una condición
     public ArrayList<Instrumento> instrumentosIdentificar(String tipo) {
         ArrayList<Instrumento> instrumentosIdentificar = new ArrayList<>();
 
         return instrumentosIdentificar;
     }
 
+    // Por forma de instrumento, por ejemplo introduce "test" y mostrará los nombres de los instrumentos que son tests.
     public ArrayList<Instrumento> instrumentosDeForma(String forma) {
         ArrayList<Instrumento> instrumentosDeForma = new ArrayList<>();
         for (Instrumento instrumento : instrumentos){
@@ -55,6 +58,7 @@ public class HelloApplication extends Application {
         return instrumentosDeForma;
     }
 
+    // Por condición, introduce "estrés" y muestra todos los instrumentos referentes al estrés
     public ArrayList<Instrumento> instrumentosDeCondicion(String condicion) {
         ArrayList<Instrumento> instrumentosDeCondicion = new ArrayList<>();
         for (Instrumento instrumento : instrumentos){
@@ -65,6 +69,7 @@ public class HelloApplication extends Application {
         return instrumentosDeCondicion;
     }
 
+    // Por evaluación de validez y confiabilidad
     public ArrayList<Instrumento> instrumentosDeValidez(Boolean validez) {
         ArrayList<Instrumento> instrumentosDeValidez = new ArrayList<>();
         for (Instrumento instrumento : instrumentos){
@@ -75,13 +80,28 @@ public class HelloApplication extends Application {
         return instrumentosDeValidez;
     }
 
-    public ArrayList<Instrumento> instrumentosOrdenadosPorId() {
-        ArrayList<Instrumento> instrumentosOrdenadosPorId = new ArrayList<>();
-        /*
-        TO-DO: ordenar la lista usando el id como parametro para comparar.
+    /*
+        TO-DO: ordenar la lista de los siguientes metodos con su parametro
+         correspondiente para comparar.
         La neta llevo un chorro sin implementar un comparador, lo investigare y
         terminare el método, o si alguien se acuerda pues se lo avientan.
          */
+    // Todos ordenados por clave
+    public ArrayList<Instrumento> instrumentosOrdenadosPorId() {
+        ArrayList<Instrumento> instrumentosOrdenadosPorId = new ArrayList<>();
+
         return instrumentosOrdenadosPorId;
     }
+
+    // Todos ordenados por primer autor.
+    public ArrayList<Instrumento> instrumentosOrdenadosPorAutor() {
+        ArrayList<Instrumento> instrumentosOrdenadosPorAutor = new ArrayList<>();
+
+        return instrumentosOrdenadosPorAutor;
+    }
+
+    /*
+    TO-DO:
+    Consultar los instrumentos de acuerdo a la condición y si estan evaluados
+     */
 }
