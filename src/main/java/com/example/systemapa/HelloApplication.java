@@ -30,54 +30,58 @@ public class HelloApplication extends Application {
 
     // Introduce un autor y muestra todos los instrumentos de dicho autor
     public ArrayList<Instrumento> instrumentosDelAutor(String autor) {
-        ArrayList<Instrumento> instrumentosDelAutor = new ArrayList<>();
-        for (Instrumento instrumento : instrumentos){
-            if(instrumento.getAutor().equals(autor)){
-                instrumentosDelAutor.add(instrumento);
+        ArrayList<Instrumento> resultado = new ArrayList<>();
+        instrumentos.forEach(instrumento -> {
+            if (instrumento.getAutor().equalsIgnoreCase(autor)){
+                resultado.add(instrumento);
             }
-        }
-        return instrumentosDelAutor;
+        });
+        return resultado;
     }
 
     // Este puede necesitar una revisión, no entendí muy bien la instrucción.
     // Introduce por ejemplo "identificar" (por tipo) y muestra todos los instrumentos que identifican una condición
-    public ArrayList<Instrumento> instrumentosIdentificar(String tipo) {
-        ArrayList<Instrumento> instrumentosIdentificar = new ArrayList<>();
-
-        return instrumentosIdentificar;
+    public ArrayList<Instrumento> instrumentosIdentificar(String proposito) {
+        ArrayList<Instrumento> resultado = new ArrayList<>();
+        instrumentos.forEach(instrumento -> {
+            if (instrumento.getProposito().name().equalsIgnoreCase(proposito)) {
+                resultado.add(instrumento);
+            }
+        });
+        return resultado;
     }
 
     // Por forma de instrumento, por ejemplo introduce "test" y mostrará los nombres de los instrumentos que son tests.
     public ArrayList<Instrumento> instrumentosDeForma(String forma) {
-        ArrayList<Instrumento> instrumentosDeForma = new ArrayList<>();
-        for (Instrumento instrumento : instrumentos){
-            if(instrumento.getTipo().name().equalsIgnoreCase(forma)){
-                instrumentosDeForma.add(instrumento);
+        ArrayList<Instrumento> resultado = new ArrayList<>();
+        instrumentos.forEach(instrumento -> {
+            if (instrumento.getTipo().name().equalsIgnoreCase(forma)){
+                resultado.add(instrumento);
             }
-        }
-        return instrumentosDeForma;
+        });
+        return resultado;
     }
 
     // Por condición, introduce "estrés" y muestra todos los instrumentos referentes al estrés
     public ArrayList<Instrumento> instrumentosDeCondicion(String condicion) {
-        ArrayList<Instrumento> instrumentosDeCondicion = new ArrayList<>();
-        for (Instrumento instrumento : instrumentos){
-            if(instrumento.getCondicion().name().equalsIgnoreCase(condicion)){
-                instrumentosDeCondicion.add(instrumento);
+        ArrayList<Instrumento> resultado = new ArrayList<>();
+        instrumentos.forEach(instrumento -> {
+            if (instrumento.getCondicion().name().equalsIgnoreCase(condicion)){
+                resultado.add(instrumento);
             }
-        }
-        return instrumentosDeCondicion;
+        });
+        return resultado;
     }
 
     // Por evaluación de validez y confiabilidad
     public ArrayList<Instrumento> instrumentosDeValidez(Boolean validez) {
-        ArrayList<Instrumento> instrumentosDeValidez = new ArrayList<>();
-        for (Instrumento instrumento : instrumentos){
-            if(instrumento.getValidez() == validez){
-                instrumentosDeValidez.add(instrumento);
+        ArrayList<Instrumento> resultado = new ArrayList<>();
+        instrumentos.forEach(instrumento -> {
+            if (instrumento.getValidez()==validez){
+                resultado.add(instrumento);
             }
-        }
-        return instrumentosDeValidez;
+        });
+        return resultado;
     }
 
     /*
@@ -88,20 +92,28 @@ public class HelloApplication extends Application {
          */
     // Todos ordenados por clave
     public ArrayList<Instrumento> instrumentosOrdenadosPorId() {
-        ArrayList<Instrumento> instrumentosOrdenadosPorId = new ArrayList<>();
-
-        return instrumentosOrdenadosPorId;
+        ArrayList<Instrumento> resultado = new ArrayList<>();
+        instrumentos.stream().sorted().forEach(instrumento -> resultado.add(instrumento));
+        return resultado;
     }
 
     // Todos ordenados por primer autor.
-    public ArrayList<Instrumento> instrumentosOrdenadosPorAutor() {
-        ArrayList<Instrumento> instrumentosOrdenadosPorAutor = new ArrayList<>();
+    public void instrumentosOrdenadosPorAutor() {
 
-        return instrumentosOrdenadosPorAutor;
     }
 
     /*
     TO-DO:
     Consultar los instrumentos de acuerdo a la condición y si estan evaluados
      */
+    public ArrayList<Instrumento> instrumentosPorCondicionYValidez(String condicion, Boolean validez) {
+        ArrayList<Instrumento> resultado = new ArrayList<>();
+        instrumentos.forEach(instrumento -> {
+            if (instrumento.getCondicion().name().equalsIgnoreCase(condicion)
+                    && instrumento.getValidez().equals(validez)) {
+                resultado.add(instrumento);
+            }
+        });
+        return resultado;
+    }
 }

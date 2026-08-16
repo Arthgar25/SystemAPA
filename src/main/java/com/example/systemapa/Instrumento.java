@@ -1,6 +1,8 @@
 package com.example.systemapa;
 
-public class Instrumento {
+import javax.swing.*;
+
+public class Instrumento implements Comparable {
     // Nombre del instrumento y su autor.
     private String nombre;
     private String autor;
@@ -12,6 +14,7 @@ public class Instrumento {
      */
     private Condicion condicion;    // Ansiedad, estrés o ambos.
     private Tipo tipo;              // Escala, cuestionario, test.
+    private Proposito proposito;
 
     private Boolean validez;
     private String cita;
@@ -27,15 +30,17 @@ public class Instrumento {
         this.condicion = null;
         this.tipo = null;
         this.validez = false;
+        this.proposito = null;
         this.cita = null;
         this.id = 0;
     }
 
-    public Instrumento(String nombre, String autor, Condicion condicion, Tipo tipo, Boolean validez, String cita) {
+    public Instrumento(String nombre, String autor, Condicion condicion, Tipo tipo,Proposito proposito, Boolean validez, String cita) {
         this.nombre = nombre;
         this.autor = autor;
         this.condicion = condicion;
         this.tipo = tipo;
+        this.proposito = proposito;
 
         /*
         Aqui puede ir una condición dependiente de validez, si no se cumple la cita
@@ -90,6 +95,14 @@ public class Instrumento {
         this.validez = validez;
     }
 
+    public Proposito getProposito(){
+        return proposito;
+    }
+
+    public void setProposito(Proposito proposito) {
+        this.proposito = proposito;
+    }
+
     public String getCita() {
         return cita;
     }
@@ -104,5 +117,24 @@ public class Instrumento {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+
+
+    @Override
+    public int compareTo(Object o) {
+        Instrumento otro = (Instrumento) o;
+        if (otro.getId() < id) {
+            return 1;
+        } else if (otro.getId() > id) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "ID: " + id + " | Nombre: " + nombre + " | Autor: " + autor + " | Condición: " + condicion + " | Forma: " + tipo + " | Validez: " + validez + " | Cita: " + cita;
     }
 }
