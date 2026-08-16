@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class HelloApplication extends Application {
     StorageManager storageManager = new StorageManager();
@@ -98,8 +99,14 @@ public class HelloApplication extends Application {
     }
 
     // Todos ordenados por primer autor.
-    public void instrumentosOrdenadosPorAutor() {
+    public ArrayList<Instrumento> instrumentosOrdenadosPorAutor() {
+        ArrayList<Instrumento> resultado = new ArrayList<>();
 
+        instrumentos.stream()
+                .sorted(Comparator.comparing(Instrumento::getAutor))
+                .forEach(instrumento -> resultado.add(instrumento));
+
+        return resultado;
     }
 
     /*

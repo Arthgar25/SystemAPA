@@ -1,6 +1,5 @@
 package com.example.systemapa;
 
-import javax.swing.*;
 
 public class Instrumento implements Comparable {
     // Nombre del instrumento y su autor.
