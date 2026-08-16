@@ -50,10 +50,10 @@ public class StorageManager {
     }
 
     /*
-    TO-DO: Escribir los métodos relacionados a la escritura, lectura y actualizacion
+    TODO: Escribir los métodos relacionados a la escritura, lectura y actualizacion
     del archivo csv.
 
-    Las acciones necesarias serían metodos para agregar un instrumento, eliminar un
+    Las acciones necesarias serían métodos para agregar un instrumento, eliminar un
     instrumento, leer (y guardar en la lista) el archivo completo en cada nueva sesión
     y actualizar la lista dentro del archivo en cada modificación para que los datos
     sean correctos en cada nuevo inicio de sesión.
@@ -64,7 +64,7 @@ public class StorageManager {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(ARCHIVO_CSV))) {
             for (Instrumento instrumento : instrumentos) {
                 //para escribir en el archivo primero se tiene
-                //que convertir el instrumento a una linea de texto
+                //que convertir el instrumento a una línea de texto
                 writer.write(convertirALinea(instrumento));
                 writer.newLine();
             }
@@ -76,7 +76,17 @@ public class StorageManager {
     //Leera el archivo y llenará la lista de instrumentos
     public void leerArchivo(){}
 
+    //Convierte un Instrumento en una línea de texto separada por comas,
     public String convertirALinea(Instrumento instrumento){
-        return instrumento.toString();
+        StringBuilder linea = new StringBuilder();
+        linea.append(instrumento.getId()).append(",");
+        linea.append(instrumento.getNombre()).append(",");
+        linea.append(instrumento.getAutor()).append(",");
+        linea.append(instrumento.getCondicion() == null ? "" : instrumento.getCondicion().name()).append(",");
+        linea.append(instrumento.getTipo() == null ? "" : instrumento.getTipo().name()).append(",");
+        linea.append(instrumento.getProposito() == null ? "" : instrumento.getProposito().name()).append(",");
+        linea.append(instrumento.getValidez() == null ? "" : instrumento.getValidez()).append(",");
+        linea.append(instrumento.getCita());
+        return linea.toString();
     }
 }
