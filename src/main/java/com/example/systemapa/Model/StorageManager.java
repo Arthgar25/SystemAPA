@@ -4,6 +4,9 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 
 public class StorageManager {
 
@@ -28,6 +31,7 @@ public class StorageManager {
 
     public StorageManager() {
         instrumentos = new ArrayList<>();
+        leerArchivo();
     }
 
     public ArrayList<Instrumento> getInstrumentos() {
@@ -75,7 +79,39 @@ public class StorageManager {
     }
 
     //Leera el archivo y llenará la lista de instrumentos
-    public void leerArchivo(){}
+    public void leerArchivo(){
+        File archivo = new File(ARCHIVO_CSV);
+        if (!archivo.exists()) {
+            return;
+        }
+        try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
+            reader.lines().forEach(linea -> {
+                Instrumento instrumento = convertirDeLinea(linea);
+                instrumentos.add(instrumento);
+                //asi el contador sigue despues de la clave mas alta que ya existia
+                if (instrumento.getId() >= contadorId) {
+                    contadorId = instrumento.getId() + 1;
+                }
+            });
+        } catch (IOException e) {
+            System.err.println("Error al leer el archivo" + e.getMessage());
+        }
+    }
+
+    //Convierte una linea del csv de vuelta en un Instrumento
+    public Instrumento convertirDeLinea(String linea){
+        String[] partes = linea.split(",", -1);
+        Instrumento instrumento = new Instrumento();
+        instrumento.setId(Integer.parseInt(partes[0]));
+        instrumento.setNombre(partes[1]);
+        instrumento.setAutor(partes[2]);
+        instrumento.setCondicion(partes[3].isEmpty() ? null : Condicion.valueOf(partes[3]));
+        instrumento.setTipo(partes[4].isEmpty() ? null : Tipo.valueOf(partes[4]));
+        instrumento.setProposito(partes[5].isEmpty() ? null : Proposito.valueOf(partes[5]));
+        instrumento.setValidez(partes[6].isEmpty() ? null : Boolean.valueOf(partes[6]));
+        instrumento.setCita(partes[7]);
+        return instrumento;
+    }
 
     //Convierte un Instrumento en una línea de texto separada por comas,
     public String convertirALinea(Instrumento instrumento){
