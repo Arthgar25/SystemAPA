@@ -1,5 +1,7 @@
 package com.example.systemapa;
 
+import com.example.systemapa.Model.Instrumento;
+import com.example.systemapa.Model.StorageManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

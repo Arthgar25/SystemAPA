@@ -1,4 +1,4 @@
-package com.example.systemapa;
+package com.example.systemapa.Model;
 
 public enum Tipo {
     ESCALA,

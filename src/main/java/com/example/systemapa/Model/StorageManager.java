@@ -1,4 +1,4 @@
-package com.example.systemapa;
+package com.example.systemapa.Model;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -18,11 +18,12 @@ public class StorageManager {
     ver después.
      */
 
+    // ATRIBUTOS
     private ArrayList<Instrumento> instrumentos;
 
-    //contador para la asignacion de clave
+    //contador para la asignación de clave
     private int contadorId;
-    //Archivo donde se guardaran y leeran los instrumentos
+    //Archivo donde se guardarán y leerán los instrumentos
     private static final String ARCHIVO_CSV = "instrumentos.csv";
 
     public StorageManager() {
