@@ -46,11 +46,7 @@ public class StorageManager {
     }
 
     public void eliminarInstrumento(int id) {
-        for (Instrumento instrumento : instrumentos) {
-            if (instrumento.getId() == id) {
-                instrumentos.remove(instrumento);
-            }
-        };
+        instrumentos.removeIf(instrumento -> instrumento.getId() == id);
         guardarArchivo();
     }
 
