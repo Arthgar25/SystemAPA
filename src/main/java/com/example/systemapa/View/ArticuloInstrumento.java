@@ -2,6 +2,7 @@ package com.example.systemapa.View;
 
 import com.example.systemapa.Model.Instrumento;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 
@@ -20,6 +21,7 @@ public class ArticuloInstrumento extends HBox {
 
     public ArticuloInstrumento(Instrumento instrumento) {
         this.instrumento = instrumento;
+        setAlignment(Pos.CENTER_LEFT);
         setSpacing(15);
         setPadding(new Insets(8, 12, 8, 12));
         getStyleClass().add("articulo-instrumento");
