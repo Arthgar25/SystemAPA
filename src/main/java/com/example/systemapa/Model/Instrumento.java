@@ -24,13 +24,13 @@ public class Instrumento implements Comparable {
     predeterminados para facilitar llenar la lista principal y probar los métodos.
      */
     public Instrumento() {
-        this.nombre = "";
-        this.autor = "";
-        this.condicion = null;
-        this.tipo = null;
+        this.nombre = "cadena vacía";
+        this.autor = "cadena vacía";
+        this.condicion = Condicion.AMBOS;
+        this.tipo = Tipo.CUESTIONARIO;
         this.validez = false;
-        this.proposito = null;
-        this.cita = null;
+        this.proposito = Proposito.IDENTIFICAR;
+        this.cita = "cadena vacía";
         this.id = 0;
     }
 

@@ -22,15 +22,9 @@ public class ArticuloInstrumento extends HBox {
         this.instrumento = instrumento;
         setSpacing(15);
         setPadding(new Insets(8, 12, 8, 12));
-        setStyle(
-            "-fx-border-color: #cfcfcf;" +
-            "-fx-border-radius: 8;"+
-            "-fx-background-radius: 8;" +
-            "-fx-background-color: #f9f9f9;"
-        );
+        getStyleClass().add("articulo-instrumento");
 
         nombre = new Label(instrumento.getNombre());
-        nombre.setStyle("-fx-background-color: #333333; -fx-text-fill: #ffffff; -fx-cursor: hand; -fx-background-radius: 4px;");
 
         autor = new Label(instrumento.getAutor());
         validez = new Label(instrumento.getValidez().toString());
