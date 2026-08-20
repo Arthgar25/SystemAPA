@@ -23,10 +23,10 @@ public class NavBar extends HBox {
         this.controller=controller;
         this.setAlignment(Pos.CENTER_LEFT);
         this.setSpacing(15);
-        this.setStyle("-fx-background-color: #252526; -fx-padding: 10px 20px; -fx-border-color: #333333; -fx-border-width: 0 0 1 0;");
+        this.getStyleClass().add("nav-bar");
 
         name = new Label("SistemaAPA");
-        name.setStyle("-fx-text-fill: #ffffff; -fx-font-size: 16px; -fx-font-weight: bold;");
+        name.getStyleClass().add("header");
 
         busqueda = new TextField();
         busqueda.setPromptText("");
@@ -39,8 +39,8 @@ public class NavBar extends HBox {
         };
 
         ordenadoPor = new Label("Ordenar por:");
+        ordenadoPor.getStyleClass().add("not-bold");
 
-        ordenadoPor.setStyle("-fx-text-fill: white;");
         clave = new QuickButton("Clave") {
             @Override
             protected void addAction() {

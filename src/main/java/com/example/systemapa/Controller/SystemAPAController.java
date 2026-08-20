@@ -1,6 +1,7 @@
 package com.example.systemapa.Controller;
 
 import com.example.systemapa.Model.*;
+import com.example.systemapa.View.MainScreen;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -8,6 +9,7 @@ import java.util.Comparator;
 public class SystemAPAController {
 
     private StorageManager storageManager;
+    private MainScreen mainScreen;
 
     public SystemAPAController() {
         storageManager = new StorageManager();

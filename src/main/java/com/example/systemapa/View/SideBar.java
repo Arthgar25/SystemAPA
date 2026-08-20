@@ -34,10 +34,7 @@ public class SideBar extends VBox {
         this.setPrefWidth(Double.valueOf(sideBarWidth));
         this.setAlignment(Pos.CENTER_LEFT);
         this.setSpacing(15);
-        this.setStyle("-fx-background-color: #252526;" +
-                " -fx-padding: 10px 20px;" +
-                " -fx-border-color: #333333;" +
-                " -fx-border-width: 0 1 0 0;");
+        this.getStyleClass().add("side-bar");
 
 
         // Nombre
@@ -49,7 +46,7 @@ public class SideBar extends VBox {
         // Validez
         contenedorValidez = new HBox();
         labelValidez = new Label("Validez");
-        labelValidez.setStyle("-fx-text-fill: white;");
+        ;labelValidez.getStyleClass().add("not-bold");
         validez = new CheckBox();
         validez.setSelected(true);
         contenedorValidez.setSpacing(15);

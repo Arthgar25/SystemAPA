@@ -1,21 +1,22 @@
 package com.example.systemapa.View;
 
-import com.example.systemapa.Controller.SystemAPAController;
+import com.example.systemapa.Model.Instrumento;
 import javafx.scene.layout.BorderPane;
 
 public class MainScreen extends BorderPane {
     SideBar sideBar;
     NavBar navBar;
-    ResultsView resultsView;
+    ListaPrincipal listaPrincipal;
 
-    public MainScreen(SystemAPAController controller) {
-        resultsView = new ResultsView();
-        sideBar = new SideBar(controller, resultsView);
-        navBar = new NavBar(controller, resultsView);
+    public MainScreen() {
+        sideBar = new SideBar();
+        navBar = new NavBar();
+        listaPrincipal = new ListaPrincipal();
+        listaPrincipal.agregarArticulo(new Instrumento());
         this.setStyle("-fx-background-color: white;");
         this.setTop(navBar);
         this.setLeft(sideBar);
-        this.setCenter(resultsView);
+        this.setCenter(listaPrincipal);
     }
 
     public SideBar getSideBar() {
@@ -24,5 +25,4 @@ public class MainScreen extends BorderPane {
     public NavBar getNavBar() {
         return navBar;
     }
-    public  ResultsView getResultsView(){return resultsView;}
 }

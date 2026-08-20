@@ -1,0 +1,30 @@
+.button {
+    -fx-background-color: #333333;
+    -fx-text-fill: #ffffff;
+    -fx-cursor: hand;
+    -fx-background-radius: 4px;
+}
+
+.nav-bar, .side-bar {
+    -fx-background-color: #252526;
+    -fx-padding: 10px 20px;
+    -fx-border-color: #333333;
+    -fx-border-width: 0 1 0 0;
+}
+
+.header {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.not-bold{
+    -fx-text-fill: white;
+}
+
+.articulo-instrumento {
+    -fx-border-color: #cfcfcf;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-background-color: #f9f9f9;
+}
