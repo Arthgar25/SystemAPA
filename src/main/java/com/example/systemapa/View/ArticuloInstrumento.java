@@ -1,0 +1,49 @@
+package com.example.systemapa.View;
+
+import com.example.systemapa.Model.Instrumento;
+import javafx.geometry.Insets;
+import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
+
+/*
+Esta clase representa la parte visual donde se representará cada instrumento en el UI
+ */
+public class ArticuloInstrumento extends HBox {
+    private Instrumento instrumento;
+    private final Label nombre;
+    private final Label autor;
+    private final Label validez;
+    private final Label cita;
+    private final Label proposito;
+    private final Label condicion;
+    private final QuickButton botonBorrar;
+
+    public ArticuloInstrumento(Instrumento instrumento) {
+        this.instrumento = instrumento;
+        setSpacing(15);
+        setPadding(new Insets(8, 12, 8, 12));
+        setStyle(
+            "-fx-border-color: #cfcfcf;" +
+            "-fx-border-radius: 8;"+
+            "-fx-background-radius: 8;" +
+            "-fx-background-color: #f9f9f9;"
+        );
+
+        nombre = new Label(instrumento.getNombre());
+        nombre.setStyle("-fx-background-color: #333333; -fx-text-fill: #ffffff; -fx-cursor: hand; -fx-background-radius: 4px;");
+
+        autor = new Label(instrumento.getAutor());
+        validez = new Label(instrumento.getValidez().toString());
+        cita = new Label(instrumento.getCita().toString());
+        proposito = new Label(instrumento.getProposito().toString());
+        condicion = new Label(instrumento.getCondicion().toString());
+        botonBorrar = new QuickButton("\u274C") {
+            @Override
+            protected void addAction() {
+
+            }
+        };
+        getChildren().addAll(nombre, autor, validez, cita, proposito, condicion, botonBorrar);
+
+    }
+}

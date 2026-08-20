@@ -5,6 +5,7 @@ import javafx.scene.layout.BorderPane;
 public class MainScreen extends BorderPane {
     SideBar sideBar;
     NavBar navBar;
+
     public MainScreen() {
         sideBar = new SideBar();
         navBar = new NavBar();

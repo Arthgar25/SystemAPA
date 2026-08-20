@@ -1,0 +1,13 @@
+.button {
+    -fx-background-color: #333333;
+    -fx-text-fill: #ffffff;
+    -fx-cursor: hand;
+    -fx-background-radius: 4px;
+}
+
+.box {
+    -fx-background-color: #252526;
+    -fx-padding: 10px 20px;
+    -fx-border-color: #333333;
+    -fx-border-width: 0 1 0 0;
+}
