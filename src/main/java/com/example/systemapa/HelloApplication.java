@@ -18,6 +18,8 @@ public class HelloApplication extends Application {
         MainScreen view = new MainScreen();
 
         Scene scene = new Scene(view, 720, 480);
+        String css = getClass().getResource("style.css").toExternalForm();
+        scene.getStylesheets().add(css);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
