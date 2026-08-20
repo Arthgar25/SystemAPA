@@ -40,7 +40,7 @@ public class ConsolaTest {
         System.out.println("\n===== SISTEMA APA - INSTRUMENTOS =====");
         System.out.println("1. Registrar instrumento");
         System.out.println("2. Mostrar todos los instrumentos");
-        System.out.println("3. Buscar por autor");
+        System.out.println("3. Buscar po autor");
         System.out.println("4. Buscar por propósito (identificar/manejar)");
         System.out.println("5. Buscar por forma (escala/cuestionario/test)");
         System.out.println("6. Buscar por condición (estrés/ansiedad/ambos)");

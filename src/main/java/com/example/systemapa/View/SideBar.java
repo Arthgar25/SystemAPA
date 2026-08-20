@@ -1,7 +1,9 @@
 package com.example.systemapa.View;
 
+import com.example.systemapa.Controller.SystemAPAController;
 import com.example.systemapa.Model.Condicion;
 import com.example.systemapa.Model.Proposito;
+import com.example.systemapa.Model.Tipo;
 import javafx.geometry.Pos;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -11,17 +13,22 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class SideBar extends VBox {
-    ComboBox<Proposito> proposito;
-    ComboBox<Condicion> condicion;
-    HBox contenedorValidez;
-    Label labelValidez;
-    CheckBox validez;
-    TextField nombre;
-    TextField autor;
-    TextField cita;
-    QuickButton botonRegistrar;
+    private ComboBox<Proposito> proposito;
+    private ComboBox<Condicion> condicion;
+    private HBox contenedorValidez;
+    private Label labelValidez;
+    private CheckBox validez;
+    private TextField nombre;
+    private TextField autor;
+    private TextField cita;
+    private QuickButton botonRegistrar;
+    private ComboBox<Tipo> tipo;
+    private SystemAPAController controller;
+    private ResultsView resultsView;
 
-    public SideBar() {
+    public SideBar(SystemAPAController controller,ResultsView resultsView) {
+        this.controller=controller;
+        this.resultsView = resultsView;
         // Estilos y dimensiones
         double sideBarWidth = 200;
         this.setPrefWidth(Double.valueOf(sideBarWidth));
@@ -63,15 +70,22 @@ public class SideBar extends VBox {
         condicion.setPromptText("Condicion");
         condicion.setMaxWidth(Double.MAX_VALUE);
 
+        //Tipo
+        tipo = new ComboBox<>();
+        tipo.getItems().addAll(Tipo.values());
+        tipo.setPromptText("Forma");
+        tipo.setMaxWidth(Double.MAX_VALUE);
+
         // Boton para registrar
         botonRegistrar = new QuickButton("Registrar") {
             @Override
             protected void addAction() {
-
+                controller.registrar(nombre.getText(), autor.getText(), condicion.getValue(), tipo.getValue(),
+                        proposito.getValue(), validez.isSelected(), cita.getText());
             }
         };
 
-        this.getChildren().addAll(nombre, autor, contenedorValidez, cita, proposito, condicion, botonRegistrar);
+        this.getChildren().addAll(nombre, autor, contenedorValidez, cita, proposito, condicion, tipo, botonRegistrar);
 
     }
 

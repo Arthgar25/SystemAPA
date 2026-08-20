@@ -15,7 +15,7 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        MainScreen root = new MainScreen();
+        MainScreen root = new MainScreen(controller);
 
 
         Scene scene = new Scene(root, 720, 480);

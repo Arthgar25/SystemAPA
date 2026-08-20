@@ -1,5 +1,6 @@
 package com.example.systemapa.View;
 
+import com.example.systemapa.Controller.SystemAPAController;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -14,8 +15,12 @@ public class NavBar extends HBox {
     private final Label ordenadoPor;
     private final QuickButton clave;
     private final QuickButton autor;
+    private final SystemAPAController controller;
+    private final ResultsView resultsView;
 
-    public NavBar() {
+    public NavBar(SystemAPAController controller,ResultsView resultsView) {
+        this.resultsView=resultsView;
+        this.controller=controller;
         this.setAlignment(Pos.CENTER_LEFT);
         this.setSpacing(15);
         this.setStyle("-fx-background-color: #252526; -fx-padding: 10px 20px; -fx-border-color: #333333; -fx-border-width: 0 0 1 0;");
