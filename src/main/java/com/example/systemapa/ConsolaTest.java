@@ -68,7 +68,7 @@ public class ConsolaTest {
 
         String cita = null;
         if (validez) {
-            System.out.print("Cita de la evaluación: ");
+            System.out.print("Cita de la evaluación (DD/MM/AAAA): ");
             cita = scanner.nextLine();
         }
 
@@ -138,41 +138,51 @@ public class ConsolaTest {
     }
 
     public static Condicion leerCondicion() {
-        Condicion condicion = null;
-        while (condicion == null) {
-            System.out.print("Condición (ESTRES/ANSIEDAD/AMBOS): ");
-            try {
-                condicion = Condicion.valueOf(scanner.nextLine().trim().toUpperCase());
-            } catch (IllegalArgumentException e) {
-                System.out.println("Condición no válida.");
-            }
+        System.out.println("Condición:");
+        System.out.println("1. Estrés");
+        System.out.println("2. Ansiedad");
+        System.out.println("3. Ambos");
+
+        int opcion = leerEntero("Elige una opción: ");
+        while (opcion < 1 || opcion > 3) {
+            opcion = leerEntero("Opción no válida, intenta de nuevo: ");
         }
-        return condicion;
+
+        switch (opcion) {
+            case 1: return Condicion.ESTRES;
+            case 2: return Condicion.ANSIEDAD;
+            default: return Condicion.AMBOS;
+        }
     }
 
     public static Tipo leerTipo() {
-        Tipo tipo = null;
-        while (tipo == null) {
-            System.out.print("Forma (ESCALA/CUESTIONARIO/TEST): ");
-            try {
-                tipo = Tipo.valueOf(scanner.nextLine().trim().toUpperCase());
-            } catch (IllegalArgumentException e) {
-                System.out.println("Forma no válida.");
-            }
+        System.out.println("Forma del instrumento:");
+        System.out.println("1. Escala");
+        System.out.println("2. Cuestionario");
+        System.out.println("3. Test");
+
+        int opcion = leerEntero("Elige una opción: ");
+        while (opcion < 1 || opcion > 3) {
+            opcion = leerEntero("Opción no válida, intenta de nuevo: ");
         }
-        return tipo;
+
+        switch (opcion) {
+            case 1: return Tipo.ESCALA;
+            case 2: return Tipo.CUESTIONARIO;
+            default: return Tipo.TEST;
+        }
     }
 
     public static Proposito leerProposito() {
-        Proposito proposito = null;
-        while (proposito == null) {
-            System.out.print("Propósito (IDENTIFICAR/MANEJAR): ");
-            try {
-                proposito = Proposito.valueOf(scanner.nextLine().trim().toUpperCase());
-            } catch (IllegalArgumentException e) {
-                System.out.println("Propósito no válido.");
-            }
+        System.out.println("Propósito:");
+        System.out.println("1. Identificar");
+        System.out.println("2. Manejar");
+
+        int opcion = leerEntero("Elige una opción: ");
+        while (opcion < 1 || opcion > 2) {
+            opcion = leerEntero("Opción no válida, intenta de nuevo: ");
         }
-        return proposito;
+
+        return (opcion == 1) ? Proposito.IDENTIFICAR : Proposito.MANEJAR;
     }
 }

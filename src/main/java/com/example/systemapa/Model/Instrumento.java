@@ -134,6 +134,9 @@ public class Instrumento implements Comparable {
 
     @Override
     public String toString() {
-        return "ID: " + id + " | Nombre: " + nombre + " | Autor: " + autor + " | Condición: " + condicion + " | Forma: " + tipo + " | Validez: " + validez + " | Cita: " + cita;
+        String validezTexto = (validez != null && validez) ? "Sí" : "No";
+        String citaTexto = (cita == null || cita.isBlank()) ? "No aplica" : cita;
+
+        return "ID: " + id + " | Nombre: " + nombre + " | Autor: " + autor + " | Condición: " + condicion + " | Forma: " + tipo + " | Validez: " + validezTexto + " | Cita: " + citaTexto;
     }
 }

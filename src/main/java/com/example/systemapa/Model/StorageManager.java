@@ -39,7 +39,7 @@ public class StorageManager {
     }
 
     public void registrarInstrumento(Instrumento instrumento) {
-        instrumento.setId(contadorId);
+        instrumento.setId(contadorId+1);
         contadorId++;
         instrumentos.add(instrumento);
         guardarArchivo();
