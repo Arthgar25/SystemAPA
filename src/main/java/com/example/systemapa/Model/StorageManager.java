@@ -25,7 +25,7 @@ public class StorageManager {
     private ArrayList<Instrumento> instrumentos;
 
     //contador para la asignación de clave
-    private int contadorId;
+    private int contadorId=1;
     //Archivo donde se guardarán y leerán los instrumentos
     private static final String ARCHIVO_CSV = "instrumentos.csv";
 

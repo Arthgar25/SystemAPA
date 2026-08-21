@@ -3,7 +3,6 @@ package com.example.systemapa;
 import com.example.systemapa.Controller.SystemAPAController;
 import com.example.systemapa.View.MainScreen;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -16,9 +15,8 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         MainScreen root = new MainScreen(controller);
-        MainScreen view = new MainScreen();
 
-        Scene scene = new Scene(view, 720, 480);
+        Scene scene = new Scene(root, 720, 480);
         String css = getClass().getResource("style.css").toExternalForm();
         scene.getStylesheets().add(css);
         stage.setTitle("Hello!");

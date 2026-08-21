@@ -16,10 +16,10 @@ public class NavBar extends HBox {
     private final QuickButton clave;
     private final QuickButton autor;
     private final SystemAPAController controller;
-    private final ResultsView resultsView;
+    private final ListaPrincipal listaPrincipal;
 
-    public NavBar(SystemAPAController controller,ResultsView resultsView) {
-        this.resultsView=resultsView;
+    public NavBar(SystemAPAController controller,ListaPrincipal listaPrincipal) {
+        this.listaPrincipal=listaPrincipal;
         this.controller=controller;
         this.setAlignment(Pos.CENTER_LEFT);
         this.setSpacing(15);
@@ -34,7 +34,7 @@ public class NavBar extends HBox {
         botonBusqueda = new QuickButton("Buscar") {
             @Override
             protected void addAction() {
-
+                listaPrincipal.mostrar(controller.buscarPorAutor(busqueda.getText()));
             }
         };
 
@@ -44,14 +44,14 @@ public class NavBar extends HBox {
         clave = new QuickButton("Clave") {
             @Override
             protected void addAction() {
-
+                listaPrincipal.mostrar(controller.ordenarPorId());
             }
         };
 
         autor = new QuickButton("Autor") {
             @Override
             protected void addAction() {
-
+                listaPrincipal.mostrar(controller.ordenarPorAutor());
             }
         };
 

@@ -24,11 +24,11 @@ public class SideBar extends VBox {
     private QuickButton botonRegistrar;
     private ComboBox<Tipo> tipo;
     private SystemAPAController controller;
-    private ResultsView resultsView;
+    private ListaPrincipal listaPrincipal;
 
-    public SideBar(SystemAPAController controller,ResultsView resultsView) {
+    public SideBar(SystemAPAController controller,ListaPrincipal listaPrincipal) {
         this.controller=controller;
-        this.resultsView = resultsView;
+        this.listaPrincipal = listaPrincipal;
         // Estilos y dimensiones
         double sideBarWidth = 200;
         this.setPrefWidth(Double.valueOf(sideBarWidth));
@@ -79,6 +79,7 @@ public class SideBar extends VBox {
             protected void addAction() {
                 controller.registrar(nombre.getText(), autor.getText(), condicion.getValue(), tipo.getValue(),
                         proposito.getValue(), validez.isSelected(), cita.getText());
+                listaPrincipal.mostrar(controller.getInstrumentos());
             }
         };
 
