@@ -18,7 +18,19 @@
     -fx-font-weight: bold;
 }
 
+.check-box {
+    -fx-text-fill: white;
+}
+
+.check-box .text {
+    -fx-fill: white;
+}
+
 .not-bold{
+    -fx-text-fill: white;
+}
+
+.radio-button {
     -fx-text-fill: white;
 }
 

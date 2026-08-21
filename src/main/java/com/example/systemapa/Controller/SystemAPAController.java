@@ -108,4 +108,14 @@ public class SystemAPAController {
                 .forEach(resultado::add);
         return resultado;
     }
+
+    //Elegir que tipo de razonamiento utilizara para la busqueda
+    public ArrayList<Instrumento> buscar(CriterioBusqueda criterio, String texto) {
+        return switch (criterio) {
+            case AUTOR -> buscarPorAutor(texto);
+            case FORMA -> buscarPorForma(texto);
+            case CONDICION -> buscarPorCondicion(texto);
+            case PROPOSITO -> buscarPorProposito(texto);
+        };
+    }
 }
