@@ -82,9 +82,17 @@ public class SystemAPAController {
     // Consultar los instrumentos de acuerdo a la condición y si están evaluados
     public ArrayList<Instrumento> buscarPorCondicionYValidez(String condicion, Boolean validez) {
         ArrayList<Instrumento> resultado = new ArrayList<>();
+        Condicion condicionInterna;
+        if(condicion.equalsIgnoreCase(Condicion.ESTRES.name())){
+            condicionInterna = Condicion.ESTRES;
+        } else  if(condicion.equalsIgnoreCase(Condicion.ANSIEDAD.name())){
+            condicionInterna = Condicion.ANSIEDAD;
+        } else{
+            condicionInterna = Condicion.AMBOS;
+        }
         storageManager.getInstrumentos().stream()
                 .filter(instrumento -> instrumento.getCondicion() != null
-                        && instrumento.getCondicion().name().equalsIgnoreCase(condicion)
+                        && instrumento.getCondicion().name().equalsIgnoreCase(condicionInterna.name())
                         && instrumento.getValidez() != null
                         && instrumento.getValidez().equals(validez))
                 .forEach(resultado::add);
@@ -117,5 +125,30 @@ public class SystemAPAController {
             case CONDICION -> buscarPorCondicion(texto);
             case PROPOSITO -> buscarPorProposito(texto);
         };
+    }
+
+    public ArrayList<Instrumento> terminoDeBusqueda(String texto) {
+        boolean terminoDefinido = false;
+        CriterioBusqueda criterio = CriterioBusqueda.AUTOR;
+
+        for (Condicion condicion : Condicion.values()) {
+            if(texto.equalsIgnoreCase(condicion.name())) {
+                terminoDefinido = true;
+                criterio = CriterioBusqueda.CONDICION;
+            }
+        }
+        for (Tipo tipo : Tipo.values()) {
+            if(texto.equalsIgnoreCase(tipo.name())) {
+                terminoDefinido = true;
+                criterio = CriterioBusqueda.FORMA;
+            }
+        }
+        for (Proposito proposito : Proposito.values()) {
+            if(texto.equalsIgnoreCase(proposito.name())) {
+                terminoDefinido = true;
+                criterio = CriterioBusqueda.PROPOSITO;
+            }
+        }
+        return buscar(criterio, texto);
     }
 }
